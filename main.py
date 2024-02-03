@@ -9,7 +9,7 @@ pipeline = AutoPipelineForText2Image.from_pretrained('dataautogpt3/OpenDalleV1.1
 
 @app.route('/hello')
 def hello_world():
-    image = pipeline('Airoplane with red colour passing through clouds ').images[0]
+    image = pipeline('Airoplane with red colour passing through clouds').images[0]
     print(image)
     return 'Hello, World!'
     
