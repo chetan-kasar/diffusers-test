@@ -1,6 +1,7 @@
 diffusers
 torch
 transformers
+accelerate
 
 Flask
 Flask-CORS
