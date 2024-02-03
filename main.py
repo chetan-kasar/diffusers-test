@@ -1,25 +1,18 @@
 from flask import Flask
 import warnings
-from diffusers import LCMScheduler, AutoPipelineForText2Image
 
-model_id = "stabilityai/stable-diffusion-xl-base-1.0"
-adapter_id = "latent-consistency/lcm-lora-sdxl"
+from diffusers import DiffusionPipeline
 
-pipe = AutoPipelineForText2Image.from_pretrained(model_id, variant="fp16")
-pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
-
-pipe.load_lora_weights(adapter_id)
-pipe.fuse_lora()
+pipe = DiffusionPipeline.from_pretrained("SimianLuo/LCM_Dreamshaper_v7")
 
 app = Flask(__name__)
 
-
-
 @app.route('/hello')
 def hello_world():
-    prompt = "realistic boy"
-    image = pipe(prompt=prompt, num_inference_steps=6, guidance_scale=0).images[0]
-    print(image)
+    prompt = "Real boy"
+    images = pipe(prompt=prompt, num_inference_steps=20, guidance_scale=0).images[0]
+    images.save("./image.png")
+    print(images)
     return 'Hello, World!'
     
 @app.route("/")
