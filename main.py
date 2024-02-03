@@ -5,9 +5,8 @@ from diffusers import LCMScheduler, AutoPipelineForText2Image
 model_id = "stabilityai/stable-diffusion-xl-base-1.0"
 adapter_id = "latent-consistency/lcm-lora-sdxl"
 
-pipe = AutoPipelineForText2Image.from_pretrained(model_id, torch_dtype=torch.float16, variant="fp16")
+pipe = AutoPipelineForText2Image.from_pretrained(model_id, variant="fp16")
 pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
-pipe.to("cuda")
 
 pipe.load_lora_weights(adapter_id)
 pipe.fuse_lora()
