@@ -3,6 +3,7 @@ torch
 transformers
 accelerate
 safetensors
+peft
 
 Flask
 Flask-CORS
