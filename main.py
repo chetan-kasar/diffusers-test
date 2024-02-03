@@ -11,8 +11,6 @@ app = Flask(__name__)
 def hello_world():
     prompt = "Real boy"
     images = pipe(prompt=prompt, num_inference_steps=20, guidance_scale=0).images[0]
-    images.save("./image.png")
-    print(images)
     return 'Hello, World!'
     
 @app.route("/")
