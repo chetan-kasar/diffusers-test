@@ -1,6 +1,9 @@
 from flask import Flask
 import torch
+import warnings
 from diffusers import LCMScheduler, AutoPipelineForText2Image
+
+warnings.filterwarnings("ignore", message="torch.utils._pytree._register_pytree_node is deprecated")
 
 model_id = "stabilityai/stable-diffusion-xl-base-1.0"
 adapter_id = "latent-consistency/lcm-lora-sdxl"
