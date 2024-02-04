@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import warnings
 from io import BytesIO
 import base64
