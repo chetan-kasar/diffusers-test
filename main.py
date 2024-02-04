@@ -12,7 +12,7 @@ CORS(app)
 def home():
     data = request.get_json()
     prompt = data.get('prompt')
-    print(prompt)'
+    print(prompt)
     image = pipe(prompt=prompt, num_inference_steps=20, guidance_scale=0).images[0]
     buffered = BytesIO()
     image.save(buffered, format="JPEG")
