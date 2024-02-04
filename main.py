@@ -1,5 +1,7 @@
 from flask import Flask
 import warnings
+from io import BytesIO
+import base64
 from flask_cors import CORS
 from diffusers import DiffusionPipeline
 
